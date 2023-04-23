@@ -5,7 +5,8 @@ import Home from './Routes/Home/Home.jsx'
 import Content from './Routes/Content/Content.jsx'
 import Login from './Routes/Login/Login.jsx'
 import Register from './Routes/Register/Register.jsx'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
@@ -22,6 +23,7 @@ export default function App() {
   
   return (
     <div className='App'>
+      <ToastContainer theme='colored' position='top-center'></ToastContainer>
       <RouterProvider router={router} />
     </div>
   );
