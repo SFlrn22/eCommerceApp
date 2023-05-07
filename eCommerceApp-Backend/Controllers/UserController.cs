@@ -5,6 +5,7 @@ using eCommerceApp_Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace eCommerceApp_Backend.Controllers
 {
@@ -129,6 +130,7 @@ namespace eCommerceApp_Backend.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public IActionResult DeleteUser(int userId)
         {
             if (!_userRepository.UserExists(userId))
