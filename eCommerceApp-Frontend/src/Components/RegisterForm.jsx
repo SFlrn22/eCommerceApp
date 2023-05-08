@@ -1,6 +1,7 @@
 import {Box, Button, Typography, TextField} from "@mui/material"
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
 
@@ -9,6 +10,11 @@ const RegisterForm = () => {
     const [username, updateUsername] = useState("");
     const [email, updateEmail] = useState("");
     const [password, updatePassword] = useState("");
+    const navigate = useNavigate();
+
+    const handleHaveAccClick = () => {
+        navigate('/login');
+    };
 
     const validate = () => {
         if((firstname === '' || firstname === null) && (lastname === '' || lastname === null) && (username === '' || username === null) && (email === '' || email === null) && (password === '' || password === null))
@@ -139,6 +145,7 @@ const RegisterForm = () => {
                     </Button>
                     <Button 
                        sx={{ marginTop: 3, borderRadius: 5}}
+                       onClick={handleHaveAccClick}
                         >
                         Already have an account?
                     </Button>
