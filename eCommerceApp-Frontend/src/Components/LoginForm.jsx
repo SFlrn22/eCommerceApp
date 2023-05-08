@@ -44,9 +44,11 @@ const LoginForm = () => {
                 if(res.statusText == "OK") {
                     toast.success("Logged in")
                     sessionStorage.setItem('username', username);
-                    sessionStorage.setItem('email', res['data'].email);
-                    sessionStorage.setItem('firstname', res['data'].firstName);
-                    sessionStorage.setItem('lastname', res['data'].lastName);
+                    sessionStorage.setItem('email', res['data'].user.email);
+                    sessionStorage.setItem('firstname', res['data'].user.firstName);
+                    sessionStorage.setItem('lastname', res['data'].user.lastName);
+                    sessionStorage.setItem('token', res['data'].token);
+                    navigate('/');
                 } else {
                     toast.error("Wrong Credentials");
                 }

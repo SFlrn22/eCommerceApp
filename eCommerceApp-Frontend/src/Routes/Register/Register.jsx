@@ -46,7 +46,7 @@ const Register = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={7} md={5} elevation={6} square>
+                <Grid item xs={12} sm={7} md={5} elevation={6}>
                     <RegisterForm/>
                 </Grid>
             </Grid>
