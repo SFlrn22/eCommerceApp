@@ -49,8 +49,6 @@ const LoginForm = () => {
                     sessionStorage.setItem('lastname', res['data'].user.lastName);
                     sessionStorage.setItem('token', res['data'].token);
                     navigate('/');
-                } else {
-                    toast.error("Wrong Credentials");
                 }
             })
             .catch((err) => {

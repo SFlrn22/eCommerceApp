@@ -2,6 +2,7 @@ import {Box, Button, Typography, TextField} from "@mui/material"
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const RegisterForm = () => {
 
@@ -62,8 +63,18 @@ const RegisterForm = () => {
                 "email" : email,
                 "password" : password
             };
-            console.log(inputObject);
-    }}
+            axios.post('https://localhost:7179/api/User', inputObject)
+            .then((res) => {
+                if(res.statusText == "OK") {
+                    toast.success("Your account was created with success")
+                    navigate('/login');
+                }
+            })
+            .catch((err) => {
+                toast.error(`Sign in failed, error: ${err.message} ${err.response['data'][""].errors[0].errorMessage}`)
+            })
+        }
+    }
 
     return (
         <div>
