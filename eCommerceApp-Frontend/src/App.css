@@ -5,34 +5,11 @@
 }
 
 .link {
-  color: black;
+  color: whitesmoke;
   text-decoration: none;
+  font-size: 20px;
 }
 
-.navbar {
-  display: flex;
-  height: 6vh;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 25px;
-  padding-right: 25px;
-}
 
-.nav-title {
-  font-size: 25px;
-  padding-right: 10px;
-}
 
-.left-side > .link {
-  align-self: center;
-}
 
-.left-side {
-  display: flex;
-  gap: 15px;
-}
-
-.right-side {
-  display: flex;
-  gap: 15px;
-}
