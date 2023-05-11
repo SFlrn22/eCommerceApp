@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { createBrowserRouter, createRoutesFromElements, Link, Route, Outlet, RouterProvider } from 'react-router-dom'
+import { useNavigate, createBrowserRouter, createRoutesFromElements, Link, Route, Outlet, RouterProvider } from 'react-router-dom'
 import Home from './Routes/Home/Home.jsx'
 import Content from './Routes/Content/Content.jsx'
 import Login from './Routes/Login/Login.jsx'
@@ -9,21 +9,20 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Box, Typography, AppBar, Button, Container } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom'
 
 export default function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<Root/>}>
-        <Route index element={<Home/>} />
-        <Route path='/content' element={<Content/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/register' element={<Register/>} />
+      <Route path='/' element={<Root />}>
+        <Route index element={<Home />} />
+        <Route path='/content' element={<Content />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Route>
     )
   );
-  
+
   return (
     <div className='App'>
       <ToastContainer theme='colored' position='top-center'></ToastContainer>
@@ -35,7 +34,7 @@ export default function App() {
 const Root = () => {
   const navigate = useNavigate();
   const isLogged = () => {
-    if(sessionStorage.getItem('token')) return true;
+    if (sessionStorage.getItem('token')) return true;
     return false;
   };
 
@@ -52,7 +51,7 @@ const Root = () => {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#0954DA'
+        main: '#020F9E'
       },
       secondary: {
         main: '#EE035F'
@@ -63,7 +62,7 @@ const Root = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AppBar position="static" sx={{height: 45}}>
+        <AppBar position="static" sx={{ height: 45 }}>
           <Box maxWidth="xl" display={"flex"} alignItems={'center'} justifyContent={'space-between'} >
             <Box display={"flex"} gap={1} ml={4} mt={0.8}>
               <Typography mt={0.15} mr={2}>eComm</Typography>
@@ -73,7 +72,7 @@ const Root = () => {
             <Box display={"flex"} gap={1} mr={4} mt={0.7}>
               {isLogged() ? (
                 <>
-                  <Button sx={{color: 'black'}} onClick={handleLogout}>Logout</Button>
+                  <Button sx={{ color: 'black' }} onClick={handleLogout}>Logout</Button>
                 </>
               ) : (
                 <>
@@ -84,9 +83,9 @@ const Root = () => {
             </Box>
           </Box>
         </AppBar>
-        <Box>
+        <div>
           <Outlet />
-        </Box>
+        </div>
       </ThemeProvider>
     </>
   )
