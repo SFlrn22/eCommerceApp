@@ -1,6 +1,5 @@
-import React from 'react';
 import { Grid, CssBaseline } from '@mui/material';
-import LoginForm from '../../Components/LoginForm';
+import LoginForm from '../components/LoginForm';
 
 function Login() {
   return (
@@ -12,5 +11,4 @@ function Login() {
     </Grid>
   );
 }
-
 export default Login;

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Grid, CssBaseline, Typography, Box } from '@mui/material';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
-import RegisterForm from '../../Components/RegisterForm';
-import loginbg from '../../assets/login-bg.jpg';
-import bungee from '../../Fonts/Bungee-Regular.ttf';
+import RegisterForm from '../components/RegisterForm';
+import loginbg from '../assets/login-bg.jpg';
+import bungee from '../fonts/Bungee-Regular.ttf';
 
 function Register() {
   const globalStyles = `
@@ -57,7 +56,7 @@ function Register() {
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={7} md={5} elevation={6}>
+      <Grid item xs={12} sm={7} md={5}>
         <RegisterForm />
       </Grid>
     </Grid>

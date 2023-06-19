@@ -1,12 +1,12 @@
 import { Box, Button, Typography, TextField } from '@mui/material';
-import { useState, React } from 'react';
+import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function LoginForm() {
-  const [username, updateUsername] = useState('');
-  const [password, updatePassword] = useState('');
+  const [username, updateUsername] = useState<string>('');
+  const [password, updatePassword] = useState<string>('');
   const navigate = useNavigate();
 
   const handleNoAcc = () => {
@@ -36,10 +36,15 @@ function LoginForm() {
     return true;
   };
 
-  const handleLogin = (e) => {
+  type LoginInput = {
+    userName: string;
+    password: string;
+  };
+
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validate()) {
-      const inputObject = {
+      const inputObject: LoginInput = {
         userName: username,
         password,
       };

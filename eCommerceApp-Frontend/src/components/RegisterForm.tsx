@@ -1,5 +1,5 @@
 import { Box, Button, Typography, TextField } from '@mui/material';
-import { useState, React } from 'react';
+import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -62,10 +62,18 @@ function RegisterForm() {
     return true;
   };
 
-  const handleRegister = (e) => {
+  type RegisterInput = {
+    firstname: string;
+    lastname: string;
+    userName: string;
+    email: string;
+    password: string;
+  };
+
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validate()) {
-      const inputObject = {
+      const inputObject: RegisterInput = {
         firstname,
         lastname,
         userName: username,
