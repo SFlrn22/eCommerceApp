@@ -24,7 +24,9 @@ function Navbar() {
     <AppBar position="sticky">
       <StyledToolbar>
         <Stack direction="row" spacing={2} alignItems="center">
-          <Typography variant="h5">StyledToolbar</Typography>
+          <Typography variant="h5" sx={{ userSelect: 'none' }}>
+            eCommApp
+          </Typography>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/products">Products</StyledLink>
         </Stack>

@@ -2,18 +2,9 @@ import { Grid, CssBaseline, Typography, Box } from '@mui/material';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import RegisterForm from '../components/RegisterForm';
 import loginbg from '../assets/login-bg.jpg';
-import bungee from '../fonts/Bungee-Regular.ttf';
+import { titleStyle } from '../styles/Theme';
 
 function Register() {
-  const globalStyles = `
-        @font-face {
-            font-family: 'Bungee Regular';
-            src: url(${bungee}) format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-    `;
-
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
       <CssBaseline />
@@ -39,7 +30,7 @@ function Register() {
           marginTop={35}
           sx={{ backgroundColor: 'rgba(3, 12, 46, 0.3)' }}
         >
-          <style>{globalStyles}</style>
+          <style>{titleStyle}</style>
           <Box display="flex" alignItems="center" padding={2}>
             <DeveloperBoardIcon
               sx={{ color: 'white', opacity: 0.7, fontSize: 100 }}
