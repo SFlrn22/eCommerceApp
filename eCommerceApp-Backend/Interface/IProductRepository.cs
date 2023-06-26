@@ -7,6 +7,7 @@ namespace eCommerceApp_Backend.Interface
         ICollection<Product> GetProducts();
         Product GetProduct(int productId);
         Product GetProductByName(string productName);
+        Product CompareProductsByName(Product product);
         bool ProductExists(int productId);
         bool ProductExists(string productName);
         bool CreateProduct(Product product);

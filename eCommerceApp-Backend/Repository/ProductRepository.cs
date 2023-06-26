@@ -23,6 +23,11 @@ namespace eCommerceApp_Backend.Repository
         {
             return _context.Products.Where(p => p.Name == productName).FirstOrDefault();
         }
+        public Product CompareProductsByName(Product product)
+        {
+            return GetProducts().Where(p => p.Name.Trim().ToUpper() == product.Name.Trim().ToUpper())
+                .FirstOrDefault();
+        }
         public bool ProductExists(int productId)
         {
             return _context.Products.Any(p => p.Id == productId);
