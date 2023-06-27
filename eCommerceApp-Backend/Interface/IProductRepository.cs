@@ -1,4 +1,5 @@
 ﻿using eCommerceApp_Backend.Models;
+using eCommerceApp_Backend.Models.DTO;
 
 namespace eCommerceApp_Backend.Interface
 {
@@ -7,7 +8,7 @@ namespace eCommerceApp_Backend.Interface
         ICollection<Product> GetProducts();
         Product GetProduct(int productId);
         Product GetProductByName(string productName);
-        Product CompareProductsByName(Product product);
+        Product CompareProductsByName(ProductDTO product);
         bool ProductExists(int productId);
         bool ProductExists(string productName);
         bool CreateProduct(Product product);

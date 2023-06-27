@@ -1,6 +1,6 @@
-﻿using eCommerceApp_Backend.Models.DTO;
+﻿using AutoMapper;
 using eCommerceApp_Backend.Models;
-using AutoMapper;
+using eCommerceApp_Backend.Models.DTO;
 
 namespace eCommerceApp_Backend.Helper
 {
@@ -11,6 +11,8 @@ namespace eCommerceApp_Backend.Helper
             CreateMap<User, UserDTO>();
             CreateMap<UserDTO, User>();
             CreateMap<UserCreateDTO, User>();
+            CreateMap<Product, ProductDTO>();
+            CreateMap<ProductDTO, Product>();
         }
     }
 }

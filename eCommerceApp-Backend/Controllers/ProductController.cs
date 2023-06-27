@@ -1,5 +1,7 @@
-﻿using eCommerceApp_Backend.Interface;
+﻿using AutoMapper;
+using eCommerceApp_Backend.Interface;
 using eCommerceApp_Backend.Models;
+using eCommerceApp_Backend.Models.DTO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,15 +13,17 @@ namespace eCommerceApp_Backend.Controllers
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
+        private readonly IMapper _mapper;
+        public ProductController(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
         public IActionResult GetProducts()
         {
-            var products = _productRepository.GetProducts();
+            var products = _mapper.Map<IEnumerable<ProductDTO>>(_productRepository.GetProducts());
             return Ok(products);
         }
         [HttpGet("{productId}")]
@@ -30,7 +34,7 @@ namespace eCommerceApp_Backend.Controllers
             if (!_productRepository.ProductExists(id))
                 return NotFound();
 
-            var product = _productRepository.GetProduct(id);
+            var product = _mapper.Map<ProductDTO>(_productRepository.GetProduct(id));
 
             return Ok(product);
         }
@@ -42,7 +46,7 @@ namespace eCommerceApp_Backend.Controllers
             if (!_productRepository.ProductExists(productName))
                 return NotFound();
 
-            var product = _productRepository.GetProductByName(productName);
+            var product = _mapper.Map<ProductDTO>(_productRepository.GetProductByName(productName));
 
             return Ok(product);
         }
@@ -51,7 +55,7 @@ namespace eCommerceApp_Backend.Controllers
         [ProducesResponseType(422)]
         [ProducesResponseType(500)]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
-        public IActionResult CreateProduct([FromBody] Product productToCreate)
+        public IActionResult CreateProduct([FromBody] ProductDTO productToCreate)
         {
             if (productToCreate == null)
                 return BadRequest();
@@ -64,7 +68,9 @@ namespace eCommerceApp_Backend.Controllers
                 return StatusCode(422, ModelState);
             }
 
-            if (!_productRepository.CreateProduct(productToCreate))
+            var mappedProduct = _mapper.Map<Product>(productToCreate);
+
+            if (!_productRepository.CreateProduct(mappedProduct))
             {
                 ModelState.AddModelError("", "Something went wrong while saving the product");
                 return StatusCode(500, ModelState);

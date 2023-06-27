@@ -1,6 +1,7 @@
 ﻿using eCommerceApp_Backend.Data;
 using eCommerceApp_Backend.Interface;
 using eCommerceApp_Backend.Models;
+using eCommerceApp_Backend.Models.DTO;
 
 namespace eCommerceApp_Backend.Repository
 {
@@ -23,7 +24,7 @@ namespace eCommerceApp_Backend.Repository
         {
             return _context.Products.Where(p => p.Name == productName).FirstOrDefault();
         }
-        public Product CompareProductsByName(Product product)
+        public Product CompareProductsByName(ProductDTO product)
         {
             return GetProducts().Where(p => p.Name.Trim().ToUpper() == product.Name.Trim().ToUpper())
                 .FirstOrDefault();
